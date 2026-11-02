@@ -1,0 +1,42 @@
+#! /bin/sh
+
+# Atajos de teclado: inicia sxhkd solo si no está corriendo (compilado desde el código fuente)
+pgrep -x sxhkd > /dev/null || /usr/local/bin/sxhkd &
+
+# 10 escritorios virtuales
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+# Apariencia de las ventanas
+bspc config border_width         0
+bspc config window_gap          12
+
+# Cómo se dividen las ventanas nuevas
+bspc config split_ratio          0.52
+bspc config split_dir            south
+bspc config initial_polarity     second_child
+bspc config automatic_scheme     longest_side
+
+# Modo monocle (una ventana a pantalla completa) sin bordes ni márgenes
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# El foco sigue al puntero del mouse
+bspc config focus_follows_pointer true
+
+# Reglas por aplicación
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+
+# Integración con VMware (portapapeles y ajuste de resolución)
+vmware-user &
+
+# Fondo de pantalla
+/usr/bin/feh --bg-fill "$HOME/Desktop/veph1/Fondos/wallhaven-p9yzy9.png"
+
+# Notificaciones, barra y compositor
+dunst &
+~/.config/polybar/launch.sh
+picom &
