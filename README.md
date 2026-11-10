@@ -26,6 +26,7 @@ Mi entorno de trabajo en Linux, configurado desde cero con el gestor de ventanas
 - **Reglas por aplicación**: por ejemplo, GIMP se abre flotante en el escritorio 8
 - **Integración con VMware** (`vmware-user`) para el portapapeles y el ajuste de resolución
 - **sxhkd compilado desde el código fuente** e iniciado solo si no está corriendo (`pgrep -x sxhkd || ...`)
+- **Script propio de redimensión** ([`bspwm/scripts/bspwm_resize`](bspwm/scripts/bspwm_resize)): ajusta la ventana enfocada en pasos de 20 px si es flotante o de 100 px si está en mosaico, y si no puede crecer hacia un lado lo intenta hacia el opuesto
 
 ## ⌨️ Atajos principales
 
@@ -66,7 +67,7 @@ sudo apt install bspwm sxhkd rofi dunst feh
 git clone https://github.com/eduardovergara-cyber/dotfiles-bspwm.git
 cd dotfiles-bspwm
 cp -r bspwm sxhkd ~/.config/
-chmod +x ~/.config/bspwm/bspwmrc
+chmod +x ~/.config/bspwm/bspwmrc ~/.config/bspwm/scripts/bspwm_resize
 ```
 
 > Cambia la ruta del fondo de pantalla en `bspwmrc` por una imagen tuya.

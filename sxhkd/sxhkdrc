@@ -114,7 +114,7 @@ alt + shift + {Left,Down,Up,Right}
 
 # Custom Resize
 alt + alt + {Left,Down,Up,Right}
-	/home/veph1/.config/bspwm/scripts {west,south.north.east}
+	/home/veph1/.config/bspwm/scripts/bspwm_resize {west,south,north,east}
 
 # Open Firefox
 alt + shift + f
